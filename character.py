@@ -1,7 +1,9 @@
 import random
 import numpy
+from typing import Type
 
-from stats import PrimaryStats, DerivedStats, GearbasedStats
+from enums import Magic
+from stats import BaseStats, PrimaryStats, DerivedStats, GearbasedStats
 
 
 class Character:
@@ -48,6 +50,7 @@ class Target:
 
 class FrostBolt:
     CAST_TIME = 2500
+    MAGIC_SCHOOL = Magic.Frost
 
     def __init__(self, timestamp: int, hit: bool, damage) -> None:
         super().__init__()
@@ -58,15 +61,19 @@ class FrostBolt:
 
 class Mage(Character):
 
-    def __init__(self, race, gear, level) -> None:
+    def __init__(self, race, talents, gear, level) -> None:
         super().__init__(race, level)
+
+        self.talents = talents
 
         # Race Human
         primary_stats = PrimaryStats(30, 35, 45, 125, 120)
         derived_stats = DerivedStats(primary_stats)
         gear_stats = GearbasedStats(gear)
 
-        self.stats = primary_stats + derived_stats
+        self.stats = BaseStats()
+        self.stats += primary_stats
+        self.stats += derived_stats
         self.stats += gear_stats
 
     def frostbolt_generator(self, target, casts) -> iter:

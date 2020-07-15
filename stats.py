@@ -1,33 +1,28 @@
 from __future__ import annotations
 
-from enum import Enum
 from abc import *
 
 from gear import GearSet
 
 
-class Race(Enum):
-    Human = 0
-    Gnome = 1
-
-
 class BaseStats(ABC):
 
     def __init__(self) -> None:
-        self.strength = None
-        self.agility = None
-        self.stamina = None
-        self.intellect = None
-        self.spirit = None
-
-        self.health = None
-        self.mana = None
-        self.armor = None
-
-        self.spell_hit = None
-        self.spell_crit = None
-        self.spell_power = None
-        self.mana_regen = None
+        pass
+        # self.strength = None
+        # self.agility = None
+        # self.stamina = None
+        # self.intellect = None
+        # self.spirit = None
+        #
+        # self.health = None
+        # self.mana = None
+        # self.armor = None
+        #
+        # self.spell_hit = None
+        # self.spell_crit = None
+        # self.spell_power = None
+        # self.mana_regen = None
 
     def __add__(self, other: BaseStats) -> BaseStats:
         other_vars = vars(other)

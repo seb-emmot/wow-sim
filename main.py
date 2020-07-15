@@ -2,7 +2,8 @@ import json
 
 from character import Mage, Target
 from gear import GearSet
-from stats import Race
+from talents import Talents
+from enums import Race
 
 
 # Currently only exists for testing
@@ -14,8 +15,9 @@ def main(gear_config, bolts):
     gear_dict = json.loads(gear_file_content)
 
     gear = GearSet(gear_dict)
+    talents = Talents()
 
-    char = Mage(Race.Human, gear, 60)
+    char = Mage(Race.Human, talents, gear, 60)
     target = Target(63)
 
     casts = char.frostbolt_generator(target, bolts)
