@@ -1,0 +1,101 @@
+{
+  "head": {
+    "name": "Netherwind Crown",
+    "int": 26,
+    "sta": 17,
+    "spi": 7,
+    "spell_power": 32
+  },
+  "neck": {
+    "name": "Choker of the Fire Lord",
+    "sta": 7,
+    "int": 7,
+    "spell_power": 34
+  },
+  "shoulder": {
+    "name": "Mantle of the Blackwing Cabal",
+    "sta": 12,
+    "int": 16,
+    "spell_power": 34
+  },
+  "back": {
+    "name": "Cloak of Consumption",
+    "int": 10,
+    "spell_power": 23,
+    "spell_hit": 0.01
+  },
+  "chest": {
+    "name": "Bloodvine Vest",
+    "int": 13,
+    "spell_power": 27,
+    "spell_hit": 0.02
+  },
+  "wrist": {
+    "name": "Netherwind Bindings",
+    "int": 15,
+    "sta": 9,
+    "spi": 8,
+    "spell_power": 19
+  },
+  "hands": {
+    "name": "Bloodtinged Gloves",
+    "int": 10,
+    "sta": 10,
+    "spi": 10,
+    "spell_power": 19,
+    "spell_hit": 0.01
+  },
+  "waist": {
+    "name": "Mana Igniting Cord",
+    "int": 16,
+    "sta": 12,
+    "spell_power": 25,
+    "spell_crit": 0.01
+  },
+  "legs": {
+    "name": "Bloodvine Leggings",
+    "int": 6,
+    "spell_power": 37,
+    "spell_hit": 0.01
+  },
+  "boots": {
+    "name": "Bloodvine Boots",
+    "int": 16,
+    "spell_power": 19,
+    "spell_hit": 0.01
+  },
+  "ring_1": {
+    "name": "Band of Servitude",
+    "int": 9,
+    "sta": 8,
+    "spell_power": 23
+  },
+  "ring_2": {
+    "name": "Band of Servitude",
+    "int": 7,
+    "spi": 6,
+    "spell_power": 18
+  },
+  "trinket_1": {
+  },
+  "trinket_2": {
+    "name": "Briarwood Reed",
+    "spell_power": 29
+  },
+  "main_hand": {
+    "name": "Azuresong Mageblade",
+    "int": 12,
+    "sta": 7,
+    "spell_power": 40,
+    "spell_crit": 0.01
+  },
+  "off_hand": {
+    "name": "Tome of the Ice Lord",
+    "int": 9,
+    "spell_power": 34
+  },
+  "ranged": {
+    "name": "Wand of Biting Cold",
+    "spell_power": 16
+  }
+}
