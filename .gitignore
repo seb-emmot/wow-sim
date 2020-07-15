@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Python notebooks
+*.ipynb
+
+# idea
+.idea/
