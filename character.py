@@ -1,17 +1,8 @@
 import random
 import numpy
-from typing import Type
 
-from enums import Magic
+from spells import FrostBolt
 from stats import BaseStats, PrimaryStats, DerivedStats, GearbasedStats
-
-
-class Character:
-
-    def __init__(self, race, level) -> None:
-        self.race = race
-        self.level = level
-        super().__init__()
 
 
 class Target:
@@ -48,22 +39,13 @@ class Target:
         return hit_chance if hit_chance < 1.0 else 0.99
 
 
-class FrostBolt:
-    CAST_TIME = 2500
-    MAGIC_SCHOOL = Magic.Frost
-
-    def __init__(self, timestamp: int, hit: bool, damage) -> None:
-        super().__init__()
-        self.timestamp = timestamp
-        self.hit = hit
-        self.damage = damage
-
-
-class Mage(Character):
+class Mage:
 
     def __init__(self, race, talents, gear, level) -> None:
-        super().__init__(race, level)
+        super().__init__()
 
+        self.race = race
+        self.level = level
         self.talents = talents
 
         # Race Human
