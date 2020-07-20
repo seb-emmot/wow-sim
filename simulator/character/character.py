@@ -1,8 +1,8 @@
 import random
 import numpy
 
-from spells import FrostBolt
-from stats import BaseStats, PrimaryStats, DerivedStats, GearbasedStats
+from simulator.spells import FrostBolt
+from simulator.character.stats import BaseStats, PrimaryStats, DerivedStats, GearbasedStats
 
 
 class Target:

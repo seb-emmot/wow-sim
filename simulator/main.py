@@ -1,9 +1,9 @@
 import json
 
-from character import Mage, Target
-from gear import GearSet
-from talents import Talents
-from enums import Race
+from simulator.character.character import Mage, Target
+from simulator.gear import GearSet
+from simulator.character.talents import Talents
+from simulator.enums import Race
 
 
 # Currently only exists for testing

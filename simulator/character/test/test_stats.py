@@ -1,4 +1,4 @@
-from stats import BaseStats
+from simulator.character.stats import BaseStats
 
 
 class TestBaseStats:

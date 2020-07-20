@@ -1,4 +1,4 @@
-from enums import Magic
+from simulator.enums import Magic
 
 
 class FrostBolt:

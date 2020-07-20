@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import *
 
-from gear import GearSet
+from simulator.gear import GearSet
 
 
 class BaseStats(ABC):
