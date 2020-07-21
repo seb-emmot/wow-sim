@@ -1,8 +1,10 @@
 import random
 import numpy
 
+from simulator.character.enums import Race
+from simulator.gear import GearSet
 from simulator.spells import FrostBolt
-from simulator.character.stats import BaseStats, PrimaryStats, DerivedStats, GearbasedStats
+from simulator.character.stats import PrimaryStats
 
 
 class Target:
@@ -41,7 +43,7 @@ class Target:
 
 class Mage:
 
-    def __init__(self, race, talents, gear, level) -> None:
+    def __init__(self, race, talents, gear: GearSet, level) -> None:
         super().__init__()
 
         self.race = race
@@ -49,14 +51,8 @@ class Mage:
         self.talents = talents
 
         # Race Human
-        primary_stats = PrimaryStats(30, 35, 45, 125, 120)
-        derived_stats = DerivedStats(primary_stats)
-        gear_stats = GearbasedStats(gear)
-
-        self.stats = BaseStats()
-        self.stats += primary_stats
-        self.stats += derived_stats
-        self.stats += gear_stats
+        self.stats = PrimaryStats(30, 35, 45, 125, 120) + gear.calculate_gear_stats()
+        self.stats.update_secondary_stats()
 
     def frostbolt_generator(self, target, casts) -> iter:
         prev_timestamp = 0
