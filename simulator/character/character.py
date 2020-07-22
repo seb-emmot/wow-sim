@@ -1,17 +1,20 @@
-import random
-import numpy
-
-from simulator.character.enums import Race
-from simulator.gear import GearSet
-from simulator.spells import FrostBolt
+from simulator.character.buffs import Buff, BuffName
 from simulator.character.stats import PrimaryStats
+from simulator.gear import GearSet
 
 
 class Target:
 
-    def __init__(self, level) -> None:
+    def __init__(self, level, buffs: dict = None) -> None:
         super().__init__()
+        if buffs is None:
+            buffs = {}
+
         self.level = level
+        self.buffs = buffs
+
+    def get_buff(self, buffname: BuffName):
+        return self.buffs[buffname]
 
     @property
     def level(self) -> int:
@@ -53,28 +56,6 @@ class Mage:
 
         # Race Human
         self.stats = PrimaryStats(30, 35, 45, 125, 120) + gear.calculate_gear_stats()
+
+        self.stats.update_from_talents(talents)
         self.stats.update_secondary_stats()
-
-    def frostbolt_generator(self, target, casts) -> iter:
-        prev_timestamp = 0
-        for i in range(0, casts):
-            fb = self.generate_frostbolt(target, prev_timestamp)
-            prev_timestamp = fb.timestamp
-            yield fb
-
-    def generate_frostbolt(self, target, start_timestamp) -> FrostBolt:
-        base_low = 440
-        base_high = 475
-        sp_mod = 0.814
-
-        hit_chance = target.calculate_hit_chance(self)
-        base = random.randint(base_low, base_high)
-        dmg = base + self.stats.spell_power * sp_mod
-        hit = numpy.random.choice([0, 1], p=[1 - hit_chance, hit_chance])
-        crit = numpy.random.choice([1, 2], p=[1 - self.stats.spell_crit, self.stats.spell_crit])
-
-        hit_timestamp = start_timestamp + FrostBolt.CAST_TIME
-
-        frostbolt = FrostBolt(hit_timestamp, hit, dmg * crit)
-
-        return frostbolt

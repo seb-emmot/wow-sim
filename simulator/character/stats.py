@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from simulator.character.talents import Talents
+
 
 class BaseStats:
 
@@ -20,8 +22,8 @@ class BaseStats:
         self.spell_power = None
         self.mana_regen = None
 
-        self.spell_damage_multiplier = 1.0
-        self.spell_crit_multiplier = 0.5
+        self.spell_damage_multiplier = None
+        self.spell_crit_multiplier = None
 
     def __add__(self, other: BaseStats) -> BaseStats:
         other_vars = vars(other)
@@ -49,6 +51,15 @@ class BaseStats:
         self.spell_crit = 0.01 * self.intellect / 59.5
         self.health = 10.0 * self.stamina
         self.mana_regen = 5.0 * self.spirit / 12.5
+
+    def update_from_talents(self, talents: Talents):
+        self.spell_hit = 0
+        self.spell_crit_multiplier = 0.5
+        self.spell_damage_multiplier = 1.0
+
+        self.spell_hit += talents.elemental_precision * 0.02
+        self.spell_damage_multiplier *= (1 + 0.02 * talents.piercing_ice)
+        self.spell_crit_multiplier *= (1 + 0.2 * talents.ice_shards)
 
 
 class PrimaryStats(BaseStats):

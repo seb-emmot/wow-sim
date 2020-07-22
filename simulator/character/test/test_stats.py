@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from simulator.character.stats import BaseStats, PrimaryStats, AttributeMultipliers
+from simulator.character.talents import Talents
 
 
 class TestBaseStats(TestCase):
@@ -45,6 +46,20 @@ class TestBaseStats(TestCase):
         self.assertEqual(stat.armor, 70)
         self.assertEqual(stat.mana, 1875)
         self.assertEqual(stat.health, 450)
+
+    def test_update_from_talents(self):
+        stat = BaseStats()
+        talent_dict = {
+            "elemental_precision": 3,
+            "ice_shards": 5,
+            "piercing_ice": 3,
+        }
+        talents = Talents(talent_dict)
+
+        stat.update_from_talents(talents)
+
+        self.assertEqual(stat.spell_crit_multiplier, 1.0)
+        self.assertEqual(stat.spell_damage_multiplier, 1.06)
 
 
 class TestAttributeMultipliers(TestCase):

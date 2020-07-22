@@ -24,13 +24,3 @@ class TestTalents(TestCase):
         attr_dict = vars(talents)
         for entry in attr_dict:
             self.assertEqual(attr_dict[entry], 0)
-
-    def test_add_spell_modifiers(self):
-        talent_dict = {
-            "elemental_precision": 3,
-            "ice_shards": 5,
-            "piercing_ice": 3,
-        }
-        talents = Talents(talent_dict)
-
-        spell_stats = talents.get_spell_modifiers()

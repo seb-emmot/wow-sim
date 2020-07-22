@@ -1,5 +1,6 @@
 from unittest import TestCase
 from simulator.character.character import *
+from simulator.character.enums import Race
 from simulator.character.talents import Talents
 
 
