@@ -2,7 +2,7 @@ from simulator.character.enums import Magic
 
 
 class FrostBolt:
-    CAST_TIME = 2500
+    CAST_TIME = 3000
     MAGIC_SCHOOL = Magic.Frost
 
     def __init__(self, timestamp: int, hit: bool, damage) -> None:

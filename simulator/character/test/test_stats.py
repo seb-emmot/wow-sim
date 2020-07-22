@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from simulator.character.stats import BaseStats, PrimaryStats
+from simulator.character.stats import BaseStats, PrimaryStats, AttributeMultipliers
 
 
 class TestBaseStats(TestCase):
@@ -45,3 +45,27 @@ class TestBaseStats(TestCase):
         self.assertEqual(stat.armor, 70)
         self.assertEqual(stat.mana, 1875)
         self.assertEqual(stat.health, 450)
+
+
+class TestAttributeMultipliers(TestCase):
+
+    def test_setup_multiplier(self):
+        multipliers = AttributeMultipliers(1, 2, 3, 4, 5)
+
+        self.assertEqual(multipliers.strength_multiplier, 1)
+        self.assertEqual(multipliers.agility_multiplier, 2)
+        self.assertEqual(multipliers.stamina_multiplier, 3)
+        self.assertEqual(multipliers.intellect_multiplier, 4)
+        self.assertEqual(multipliers.spirit_multiplier, 5)
+
+    def test_multiply_multipliers(self):
+        first = AttributeMultipliers(1.1, 2, 3, 4, 5)
+        second = AttributeMultipliers(5, 4, 3, 2, 1)
+
+        product = first * second
+
+        self.assertEqual(product.strength_multiplier, 5.5)
+        self.assertEqual(product.agility_multiplier, 8.0)
+        self.assertEqual(product.stamina_multiplier, 9.0)
+        self.assertEqual(product.intellect_multiplier, 8.0)
+        self.assertEqual(product.spirit_multiplier, 5.0)

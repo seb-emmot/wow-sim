@@ -1,3 +1,6 @@
+from simulator.character.stats import BaseStats
+
+
 class Talents:
 
     def __init__(self, talents_dict: dict) -> None:
@@ -36,8 +39,12 @@ class Talents:
     def get_base_attribute_modifiers(self):
         pass
 
-    def get_spell_modifiers(self):
-        pass
+    def get_spell_modifiers(self) -> BaseStats:
+        stats = BaseStats()
+        stats.spell_hit = self.elemental_precision * 0.02
+        stats.spell_damage_multiplier *= (1 + 0.02 * self.piercing_ice)
+        stats.spell_crit_multiplier *= (1 + 0.2 * self.ice_shards)
+        return stats
 
 
 class Buff:

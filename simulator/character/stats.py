@@ -20,6 +20,9 @@ class BaseStats:
         self.spell_power = None
         self.mana_regen = None
 
+        self.spell_damage_multiplier = 1.0
+        self.spell_crit_multiplier = 0.5
+
     def __add__(self, other: BaseStats) -> BaseStats:
         other_vars = vars(other)
 
@@ -57,3 +60,24 @@ class PrimaryStats(BaseStats):
         self.stamina = stamina
         self.intellect = intellect
         self.spirit = spirit
+
+
+class AttributeMultipliers:
+    def __init__(self, strength=1, agility=1, stamina=1, intellect=1, spirit=1) -> None:
+        super().__init__()
+        self.strength_multiplier = strength
+        self.agility_multiplier = agility
+        self.stamina_multiplier = stamina
+        self.intellect_multiplier = intellect
+        self.spirit_multiplier = spirit
+
+    def __mul__(self, other: AttributeMultipliers) -> AttributeMultipliers:
+        new_multipliers = AttributeMultipliers(
+            strength=self.strength_multiplier * other.strength_multiplier,
+            agility=self.agility_multiplier * other.agility_multiplier,
+            stamina=self.stamina_multiplier * other.stamina_multiplier,
+            intellect=self.intellect_multiplier * other.intellect_multiplier,
+            spirit=self.spirit_multiplier * other.spirit_multiplier,
+        )
+
+        return new_multipliers
