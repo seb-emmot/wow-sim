@@ -38,6 +38,7 @@ class Target:
         else:
             raise Exception("Cannot handle level diffs of more than 3")
 
+        # hit chance can never be above 99%
         return hit_chance if hit_chance < 1.0 else 0.99
 
 
