@@ -45,6 +45,7 @@ class BaseStats:
 
         return self
 
+    # TODO: Break out weights (possibly inject weight numbers)
     def update_secondary_stats(self):
         self.armor = 2.0 * self.agility
         self.mana = 15.0 * self.intellect
@@ -52,6 +53,7 @@ class BaseStats:
         self.health = 10.0 * self.stamina
         self.mana_regen = 5.0 * self.spirit / 12.5
 
+    # TODO: This is mage-specific and should not be here.
     def update_from_talents(self, talents: Talents):
         self.spell_hit = 0
         self.spell_crit_multiplier = 0.5

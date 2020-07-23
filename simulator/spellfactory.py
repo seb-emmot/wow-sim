@@ -1,4 +1,5 @@
-from simulator.character.character import Mage, Target
+from simulator.character.character import Mage
+from simulator.character.target import Target
 from simulator.spells import FrostBolt
 
 

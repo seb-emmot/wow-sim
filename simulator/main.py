@@ -1,7 +1,8 @@
 import json
 
 from simulator.character.buffs import BuffName, WintersChill
-from simulator.character.character import Mage, Target
+from simulator.character.character import Mage
+from simulator.character.target import Target
 from simulator.gear import GearSet
 from simulator.character.talents import Talents
 from simulator.character.enums import Race
@@ -38,13 +39,12 @@ def main(gear_config, bolts):
 
 if __name__ == "__main__":
 
-    gear = "config/gear.json"
+    gear_filename = "config/gear.json"
     num_bolts = 100
 
     total_dmg = 0
-    hits = list(main(gear, num_bolts))
+    hits = list(main(gear_filename, num_bolts))
     for entry in hits:
         print(entry.timestamp, entry.damage)
         total_dmg += entry.damage
     print(total_dmg)
-
